@@ -1,0 +1,28 @@
+.box {
+  border-radius: 5px;
+  min-width: 7rem;
+  min-height: 7rem;
+  background-color: rgb(138, 166, 190);
+  margin: 10px;
+  box-shadow: 5px 10px 10px black;
+}
+
+.box p:nth-child(1) {
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+.box p:nth-child(3) {
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+  font-family: "Times New Roman", Times, serif;
+}
+.box p:nth-child(4) {
+  text-align: center;
+  font-weight: bold;
+  font-size: 12px;
+  font-family: "Times New Roman", Times, serif;
+  color: rgb(65, 57, 57);
+}
