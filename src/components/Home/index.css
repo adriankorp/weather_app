@@ -1,9 +1,15 @@
+.conteiner {
+    display: grid;
+    position: absolute;
+    width: 100%;
+    height: 30%;
+    top: 30%;
+    justify-content: center;
+}
+
 .home-page {
   display: flex;
-  position: absolute;
-  width: 100%;
-  height: 20%;
-  top: 30%;
-  justify-content: center;
+
 }
+
 

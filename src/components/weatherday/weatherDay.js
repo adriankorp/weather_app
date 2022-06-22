@@ -6,9 +6,12 @@ class WeatherDayBox extends React.Component {
     return (
       <div className="box">
         <p>{this.props.day}</p>
-        <div>Icon of weather</div>
-        <p>Temp</p>
-        <p>Wether desc</p>
+        <div className="image">     <img 
+      src={`http://openweathermap.org/img/wn/${this.props.icon}@2x.png`}
+      alt="weather icon"
+      /></div>
+        <p>{parseInt(this.props.temp)+ "°C"}</p>
+        <p>{this.props.desc}</p>
       </div>
     );
   }
