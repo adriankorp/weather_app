@@ -9,17 +9,15 @@ input {
     width: 50%;
     border-radius: 5px;
     box-shadow: 5px 10px 10px black;
-    background-color: #2f88b1;
+
     border: none;
 
 
 }
 input::placeholder{
-    color: white;
+    color: black;
 }
-input:focus{
-    background-color: #6693a8;
-}
+
 
 .button {
     margin-left: 20px;
@@ -36,5 +34,5 @@ input:focus{
 }
 
 button:active {
-    background-color: #6693a8;
+    background-color: #065e86;
 }
