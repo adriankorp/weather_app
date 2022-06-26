@@ -35,7 +35,7 @@ class Home extends React.Component {
     let weatherData = {};
     let hourly = undefined;
     await fetch(
-      `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=cbf4ff2774f0db11d63aa0b5cb85f1f6&units=metric`
+      `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=cbf4ff2774f0db11d63aa0b5cb85f1f6&units=metric`
     )
       .then((response) => response.json())
       .then((data) => {
