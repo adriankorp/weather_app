@@ -2,6 +2,7 @@ import "./index.css";
 import WeatherDayBox from "../weatherday/weatherDay";
 import Form from "../Form";
 import React from "react";
+import Hourly from "../Hourly";
 
 class Home extends React.Component {
   state = {
@@ -114,6 +115,7 @@ class Home extends React.Component {
               icon={this.state.day5.daily.weather[0].icon}
             ></WeatherDayBox>
           </div>
+          <Hourly hourly = {this.state.day1.hourly}></Hourly>
         </div>
       );
     }
