@@ -10,16 +10,25 @@ header {
   align-items: center;
   justify-content: center;
   letter-spacing: 1px;
-  line-height:2
+  line-height:2;
+
 }
 
 h1 {
   background-image: url(https://media0.giphy.com/media/jxbtTiXsCUZQXOKP2M/giphy.gif?cid=ecf05e47p4irydohkj6a5l6qkxzzyfuf4ysd8eayi3yj64qs&rid=giphy.gif&ct=g);
   background-size: cover;
   color: transparent;
+  white-space: nowrap;
   -moz-background-clip: text;
   -webkit-background-clip: text;
   text-transform: uppercase;
   font-size: 80px;
   margin: 10px 0;
+}
+
+
+@media only screen and (max-width: 600px) {
+  h1 {
+    font-size: 35px;
+  }
 }

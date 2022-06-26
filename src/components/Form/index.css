@@ -36,3 +36,9 @@ input::placeholder{
 button:active {
     background-color: #065e86;
 }
+
+@media only screen and (max-width: 600px) {
+    .button {
+        margin:10px;
+    }
+}

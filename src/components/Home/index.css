@@ -15,4 +15,14 @@
 
 }
 
+@media only screen and (max-width: 600px) {
+  .home-page {
+    display: flex;
+    justify-content: center;
+    height: fit-content;
+    margin-bottom: 5%;
+    flex-wrap: wrap;
+  
+}
+}
 
