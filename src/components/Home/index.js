@@ -11,17 +11,18 @@ class Home extends React.Component {
     day3: undefined,
     day4: undefined,
     day5: undefined,
+    hourly: undefined,
   };
 
   async componentDidMount() {
     await this.fetchData("Warszawa")
       .then((data) => {
         this.setState({
-          day1: { daily: data.daily[0], hourly: data.hourly[0] },
-          day2: { daily: data.daily[1], hourly: data.hourly[1] },
+          day1: { daily: data.daily[0], hourly: data.hourly[4] },
+          day2: { daily: data.daily[1], hourly: data.hourly[3] },
           day3: { daily: data.daily[2], hourly: data.hourly[2] },
-          day4: { daily: data.daily[3], hourly: data.hourly[3] },
-          day5: { daily: data.daily[4], hourly: data.hourly[4] },
+          day4: { daily: data.daily[3], hourly: data.hourly[1] },
+          day5: { daily: data.daily[4], hourly: data.hourly[0] },
         });
       })
       .catch((error) => {
@@ -65,11 +66,11 @@ class Home extends React.Component {
       await this.fetchData(city)
         .then((data) => {
           this.setState({
-            day1: { daily: data.daily[0], hourly: data.hourly[0] },
-            day2: { daily: data.daily[1], hourly: data.hourly[1] },
+            day1: { daily: data.daily[0], hourly: data.hourly[4] },
+            day2: { daily: data.daily[1], hourly: data.hourly[3] },
             day3: { daily: data.daily[2], hourly: data.hourly[2] },
-            day4: { daily: data.daily[3], hourly: data.hourly[3] },
-            day5: { daily: data.daily[4], hourly: data.hourly[4] },
+            day4: { daily: data.daily[3], hourly: data.hourly[1] },
+            day5: { daily: data.daily[4], hourly: data.hourly[0] },
           });
         })
         .catch((error) => {
@@ -78,6 +79,10 @@ class Home extends React.Component {
     }
   };
 
+  handleCLick(day) {
+    this.setState({ hourly: day });
+  }
+
   render() {
     if (this.state.day1) {
       return (
@@ -85,37 +90,46 @@ class Home extends React.Component {
           <Form getWeatherData={this.getWeatherData}></Form>
           <div className="home-page">
             <WeatherDayBox
+              hourly={() => this.handleCLick(this.state.day1.hourly)}
               day={this.state.day1.daily.dt}
               temp={this.state.day1.daily.main.temp}
               desc={this.state.day1.daily.weather[0].description}
               icon={this.state.day1.daily.weather[0].icon}
             ></WeatherDayBox>
             <WeatherDayBox
+              hourly={() => this.handleCLick(this.state.day2.hourly)}
               day={this.state.day2.daily.dt}
               temp={this.state.day2.daily.main.temp}
               desc={this.state.day2.daily.weather[0].description}
               icon={this.state.day2.daily.weather[0].icon}
             ></WeatherDayBox>
             <WeatherDayBox
+              hourly={() => this.handleCLick(this.state.day3.hourly)}
               day={this.state.day3.daily.dt}
               temp={this.state.day3.daily.main.temp}
               desc={this.state.day3.daily.weather[0].description}
               icon={this.state.day3.daily.weather[0].icon}
             ></WeatherDayBox>
             <WeatherDayBox
+              hourly={() => this.handleCLick(this.state.day4.hourly)}
               day={this.state.day4.daily.dt}
               temp={this.state.day4.daily.main.temp}
               desc={this.state.day4.daily.weather[0].description}
               icon={this.state.day4.daily.weather[0].icon}
             ></WeatherDayBox>
             <WeatherDayBox
+              hourly={() => this.handleCLick(this.state.day5.hourly)}
               day={this.state.day5.daily.dt}
               temp={this.state.day5.daily.main.temp}
               desc={this.state.day5.daily.weather[0].description}
               icon={this.state.day5.daily.weather[0].icon}
             ></WeatherDayBox>
           </div>
-          <Hourly hourly = {this.state.day1.hourly}></Hourly>
+          {this.state.hourly ? (
+            <Hourly hourly={this.state.hourly}></Hourly>
+          ) : (
+            <></>
+          )}
         </div>
       );
     }

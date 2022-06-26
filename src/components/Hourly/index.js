@@ -3,7 +3,6 @@ import "./index.css";
 const Hourly = (props) => (
   <div className="conteiner-hourly">
     {props.hourly.map((el, idnex) => {
-      console.log(el);
       return (
         <div className="hourly">
           <p>
