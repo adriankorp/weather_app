@@ -89,41 +89,27 @@ class Home extends React.Component {
         <div className="conteiner">
           <Form getWeatherData={this.getWeatherData}></Form>
           <div className="home-page">
+            {console.log(this.state)}
             <WeatherDayBox
               hourly={() => this.handleCLick(this.state.day1.hourly)}
-              day={this.state.day1.daily.dt}
-              temp={this.state.day1.daily.main.temp}
-              desc={this.state.day1.daily.weather[0].description}
-              icon={this.state.day1.daily.weather[0].icon}
-            ></WeatherDayBox>
+              day={this.state.day1}
+            />
             <WeatherDayBox
               hourly={() => this.handleCLick(this.state.day2.hourly)}
-              day={this.state.day2.daily.dt}
-              temp={this.state.day2.daily.main.temp}
-              desc={this.state.day2.daily.weather[0].description}
-              icon={this.state.day2.daily.weather[0].icon}
-            ></WeatherDayBox>
+              day={this.state.day2}
+            />
             <WeatherDayBox
               hourly={() => this.handleCLick(this.state.day3.hourly)}
-              day={this.state.day3.daily.dt}
-              temp={this.state.day3.daily.main.temp}
-              desc={this.state.day3.daily.weather[0].description}
-              icon={this.state.day3.daily.weather[0].icon}
-            ></WeatherDayBox>
+              day={this.state.day3}
+            />
             <WeatherDayBox
               hourly={() => this.handleCLick(this.state.day4.hourly)}
-              day={this.state.day4.daily.dt}
-              temp={this.state.day4.daily.main.temp}
-              desc={this.state.day4.daily.weather[0].description}
-              icon={this.state.day4.daily.weather[0].icon}
-            ></WeatherDayBox>
+              day={this.state.day4}
+            />
             <WeatherDayBox
               hourly={() => this.handleCLick(this.state.day5.hourly)}
-              day={this.state.day5.daily.dt}
-              temp={this.state.day5.daily.main.temp}
-              desc={this.state.day5.daily.weather[0].description}
-              icon={this.state.day5.daily.weather[0].icon}
-            ></WeatherDayBox>
+              day={this.state.day5}
+            />
           </div>
           {this.state.hourly ? (
             <Hourly hourly={this.state.hourly}></Hourly>
