@@ -12,32 +12,29 @@ class Home extends React.Component {
     day4: undefined,
     day5: undefined,
     hourly: undefined,
+    error: false,
+    city: "",
   };
 
-  async componentDidMount() {
-    await this.fetchData("Warszawa")
-      .then((data) => {
-        this.setState({
-          day1: { daily: data.daily[0], hourly: data.hourly[4] },
-          day2: { daily: data.daily[1], hourly: data.hourly[3] },
-          day3: { daily: data.daily[2], hourly: data.hourly[2] },
-          day4: { daily: data.daily[3], hourly: data.hourly[1] },
-          day5: { daily: data.daily[4], hourly: data.hourly[0] },
-        });
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+  componentDidMount() {
+    this.fetchData("Warszawa");
 
     //console.log(this.state)
   }
-  async fetchData(city) {
+  fetchData(city) {
     let weatherData = {};
     let hourly = undefined;
-    await fetch(
+    fetch(
       `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=cbf4ff2774f0db11d63aa0b5cb85f1f6&units=metric`
     )
-      .then((response) => response.json())
+      .then((response) => {
+        if (response.status >= 200 && response.status <= 299) {
+          this.setState({ city: city });
+          return response.json();
+        } else {
+          this.setState({ error: true });
+        }
+      })
       .then((data) => {
         let fivePartList = Math.ceil(data.list.length / 5);
         weatherData["daily"] = data.list.filter((el, index) => index % 8 === 0);
@@ -54,8 +51,16 @@ class Home extends React.Component {
             weekday: "long",
           });
         });
-      });
-
+        this.setState({
+          day1: { daily: weatherData.daily[0], hourly: weatherData.hourly[4] },
+          day2: { daily: weatherData.daily[1], hourly: weatherData.hourly[3] },
+          day3: { daily: weatherData.daily[2], hourly: weatherData.hourly[2] },
+          day4: { daily: weatherData.daily[3], hourly: weatherData.hourly[1] },
+          day5: { daily: weatherData.daily[4], hourly: weatherData.hourly[0] },
+        });
+        this.setState({ error: false });
+      })
+      .catch((err) => console.log(err));
     //console.log(weatherData);
     return weatherData;
   }
@@ -63,19 +68,7 @@ class Home extends React.Component {
     data.preventDefault();
     let city = data.target.elements.city.value;
     if (city) {
-      await this.fetchData(city)
-        .then((data) => {
-          this.setState({
-            day1: { daily: data.daily[0], hourly: data.hourly[4] },
-            day2: { daily: data.daily[1], hourly: data.hourly[3] },
-            day3: { daily: data.daily[2], hourly: data.hourly[2] },
-            day4: { daily: data.daily[3], hourly: data.hourly[1] },
-            day5: { daily: data.daily[4], hourly: data.hourly[0] },
-          });
-        })
-        .catch((error) => {
-          console.error("Error:", error);
-        });
+      this.fetchData(city);
     }
   };
 
@@ -87,9 +80,11 @@ class Home extends React.Component {
     if (this.state.day1) {
       return (
         <div className="conteiner">
-          <Form getWeatherData={this.getWeatherData}></Form>
+          <h2>{this.state.city}</h2>
+          <Form getWeatherData={this.getWeatherData} />
+          {this.state.loading && <p>Loading</p>}
+          {this.state.error && <p>Can't fetch data</p>}
           <div className="home-page">
-            {console.log(this.state)}
             <WeatherDayBox
               hourly={() => this.handleCLick(this.state.day1.hourly)}
               day={this.state.day1}

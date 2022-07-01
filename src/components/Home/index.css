@@ -5,8 +5,19 @@
     height: 50%;
     top: 20%;
     justify-content: center;
+
 }
 
+.conteiner p  {
+  text-align: center;
+  font-weight: bold;
+  font-family: 'Times New Roman', Times, serif;
+  height: fit-content;
+}
+.conteiner h2:first-of-type {
+  text-align: center;
+  font-family: 'Times New Roman', Times, serif;
+}
 .home-page {
   display: flex;
   justify-content: center;
