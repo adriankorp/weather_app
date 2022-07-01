@@ -61,8 +61,7 @@ class Home extends React.Component {
         this.setState({ error: false });
       })
       .catch((err) => console.log(err));
-    //console.log(weatherData);
-    return weatherData;
+
   }
   getWeatherData = async (data) => {
     data.preventDefault();
