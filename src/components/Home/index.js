@@ -81,7 +81,6 @@ class Home extends React.Component {
         <div className="conteiner">
           <h2>{this.state.city}</h2>
           <Form getWeatherData={this.getWeatherData} />
-          {this.state.loading && <p>Loading</p>}
           {this.state.error && <p>Can't fetch data</p>}
           <div className="home-page">
             <WeatherDayBox
