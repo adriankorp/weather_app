@@ -4,6 +4,7 @@
   width: 100%;
   height: 100%;
   justify-content: center;
+  margin-bottom: 50px;
 }
 .hourly {
   border-radius: 5px;
@@ -21,8 +22,8 @@
   text-align: center;
   font-weight: bold;
   font-size: 13px;
-  margin-bottom: 10px;
-  color: rgb(65, 57, 57);
+  margin-bottom: -3px;
+  color: black;
 }
 .hourly p:nth-child(3) {
   text-align: center;

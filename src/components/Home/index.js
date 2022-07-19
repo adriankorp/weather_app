@@ -37,6 +37,11 @@ class Home extends React.Component {
       })
       .then((data) => {
         let fivePartList = Math.ceil(data.list.length / 5);
+        data.list.forEach((element, ind, arr) => {
+          arr[ind]["dt"] = new Date(element.dt * 1000).toLocaleString("en-US", {
+            weekday: "long",
+          });
+        });
         weatherData["daily"] = data.list.filter((el, index) => index % 8 === 0);
         hourly = [
           data.list.splice(-fivePartList),
@@ -46,11 +51,7 @@ class Home extends React.Component {
           data.list,
         ];
         weatherData["hourly"] = hourly;
-        weatherData.daily.forEach((element, ind, arr) => {
-          arr[ind]["dt"] = new Date(element.dt * 1000).toLocaleString("en-US", {
-            weekday: "long",
-          });
-        });
+
         this.setState({
           day1: { daily: weatherData.daily[0], hourly: weatherData.hourly[4] },
           day2: { daily: weatherData.daily[1], hourly: weatherData.hourly[3] },

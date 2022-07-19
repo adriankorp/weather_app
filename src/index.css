@@ -1,12 +1,21 @@
 body {
   margin: 0;
-  height: 100vh;
-  margin: 0; 
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: #daf6f6;
   background: -webkit-linear-gradient(49deg, #daf6f6 0%, #3e59f5 100%);
-  background: linear-gradient(49deg, #daf6f6 0%, #3e59f5 100%);
+  background: linear-gradient(to bottom,49deg, #daf6f6 0%, #3e59f5 100%);
+  background-size: 100%;
+	background-repeat: no-repeat;
 }
 
+body:before{
+	content:'';
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	width: 100%;
+	z-index: -1;
+	background: linear-gradient(to right bottom, rgba(255,255,255,0.2), #3e59f5 75%);
+}

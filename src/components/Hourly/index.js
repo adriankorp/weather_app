@@ -6,7 +6,8 @@ const Hourly = (props) => (
       return (
         <div className="hourly animate__animated animate__rotateIn">
           <p>
-            {el.dt_txt.split(" ")[1]} <br />
+            {el.dt}<br />
+            {el.dt_txt.split(" ")[1].slice(0,5)} <br />
             {el.dt_txt.split(" ")[0]}
           </p>
           <div className="image">
