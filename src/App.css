@@ -2,7 +2,6 @@
 
 header {
   text-align: center;
-  font-family: "Cairo";
   text-align: center;
   color: #FFF;
   display: flex;
@@ -15,16 +14,81 @@ header {
 }
 
 h1 {
-  background-image: url(https://media0.giphy.com/media/jxbtTiXsCUZQXOKP2M/giphy.gif?cid=ecf05e47p4irydohkj6a5l6qkxzzyfuf4ysd8eayi3yj64qs&rid=giphy.gif&ct=g);
-  background-size: cover;
-  color: transparent;
   white-space: nowrap;
   -moz-background-clip: text;
   -webkit-background-clip: text;
   text-transform: uppercase;
-  font-size: 80px;
+  font-size: 30px;
   margin: 10px 0;
 }
+
+
+.sun {
+  text-align: center;
+  color: yellow !important;
+  
+  width: 50px;
+  font-size: 42px;
+  margin: 0 auto 0 auto;
+  color: var(--yellow);
+  animation: home-shadow-sun 10s linear 0s infinite alternate none
+}
+
+
+
+.shadow {
+  background-color: #28C248 !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  height: 50px;
+  color: #0868fe !important;
+  width: 50px;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--blue);
+  font-size: 52px;
+  margin: 0 auto;
+  animation: home-shadow 10s linear 0s infinite alternate none
+}
+
+@keyframes home-shadow {
+  0.0% {
+      box-shadow: 24px 14px 10px -2px rgba(30,30,60,.45)
+  }
+
+  50% {
+      box-shadow: 0 6px 2px -2px rgba(30,30,60,.25)
+  }
+
+  to {
+      box-shadow: -24px 14px 10px -2px rgba(30,30,60,.45)
+  }
+}
+
+@keyframes home-shadow-sun {
+  0.0% {
+      transform: translate(-70px)
+  }
+
+  25% {
+      transform: translate(-30px,-10px)
+  }
+
+  50% {
+      transform: translateY(-15px)
+  }
+
+  75% {
+      transform: translate(30px,-10px)
+  }
+
+  to {
+      transform: translate(70px)
+  }
+}
+
 
 
 @media only screen and (max-width: 600px) {

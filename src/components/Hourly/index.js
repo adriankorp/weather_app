@@ -1,10 +1,10 @@
 import "./index.css";
-
+import "animate.css";
 const Hourly = (props) => (
   <div className="conteiner-hourly">
     {props.hourly.map((el, idnex) => {
       return (
-        <div className="hourly">
+        <div className="hourly animate__animated animate__rotateIn">
           <p>
             {el.dt_txt.split(" ")[1]} <br />
             {el.dt_txt.split(" ")[0]}

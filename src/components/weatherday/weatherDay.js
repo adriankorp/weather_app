@@ -1,12 +1,12 @@
 import React from "react";
 import "./weatherDay.css";
-
+import "animate.css";
 
 
 class WeatherDayBox extends React.Component {
   render() {
     return (
-      <div className="box" onClick={this.props.hourly}>
+      <div className="box animate__animated animate__zoomIn" onClick={this.props.hourly}>
         <p>{this.props.day.daily.dt}</p>
         <div className="image">
           <img
